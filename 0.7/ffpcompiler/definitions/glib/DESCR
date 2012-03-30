@@ -1,0 +1,7 @@
+GLib is a cross-platform software utility library that began as part of the
+GTK+ project. However, before releasing version 2 of GTK+, the project's
+developers decided to separate non-GUI-specific code from the GTK+ platform, 
+thus creating GLib as a separate product. GLib was released as a separate
+library so other developers, those who did not make use of the GUI-related 
+portions of GTK+, could make use of the non-GUI portions of the library
+without the overhead of depending on a full-blown GUI library.

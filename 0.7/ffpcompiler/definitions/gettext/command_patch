@@ -1,0 +1,6 @@
+cd $E
+# Patch against:
+#
+# spawn.h error: field '_sp' has incomplete type
+# Patch was downloaded from: wget http://www.anticore.org/ratgentoo/files/target/etc/portage/patches/sys-devel/gettext/spawn.patch
+patch -p1 < $X/spawn.patch

@@ -1,0 +1,7 @@
+make prefix=${CPREFIX} MANDIR=${CPREFIX}/share/man INSTALLROOT=$D install
+# Rename the binary
+mv $D$CPREFIX/sbin/in.tftpd $D$CPREFIX/sbin/tftpd
+# Fix the manual
+rm $D$CPREFIX/share/man/man8/tftpd.8
+mv $D$CPREFIX/share/man/man8/in.tftpd.8 $D$CPREFIX/share/man/man8/tftpd.8
+sed -i 's!in.tftpd!tftpd!g' $D$CPREFIX/share/man/man8/tftpd.8
