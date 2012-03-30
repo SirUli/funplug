@@ -1,0 +1,8 @@
+cd $E
+# Patch against bug:
+# http://sourceforge.net/tracker/index.php?func=detail&aid=2970325&group_id=13478&atid=113478
+# -----------------------------------------------------------------------------
+# main.cpp: In function 'int main(int, char**)':
+# main.cpp:75:27: error: 'memcmp' was not declared in this scope
+# -----------------------------------------------------------------------------
+patch -p0 < $X/flac-memcmp.patch
