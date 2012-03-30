@@ -1,0 +1,3 @@
+cd $E
+# Patch against Bug 62769: http://bugs.mysql.com/bug.php?id=62769
+patch -p1 < $X/mysql-va-list-bug62769.patch

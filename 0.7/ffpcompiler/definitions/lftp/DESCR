@@ -1,0 +1,5 @@
+LFTP is sophisticated file transfer program with
+command line interface. It supports FTP, HTTP,
+FISH, SFTP, HTTPS and FTPS protocols. GNU
+Readline library is used for input. 
+[pkgsrc]

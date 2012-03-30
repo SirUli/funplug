@@ -1,0 +1,8 @@
+Sndfile-tools is a small collection of programs that use libsndfile
+and other libraries to do useful things. The collection currently
+includes the following programs:
+ - sndfile-generate-chirp
+ - sndfile-jackplay
+ - sndfile-spectrogram
+ - sndfile-mix-to-mono 
+[pkgsrc]

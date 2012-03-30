@@ -1,0 +1,4 @@
+libmatroska is a C++ libary to parse Matroska files (.mkv and .mka). It is
+available in LGPL license as a source code that should compile on many 
+platforms including Windows, Linux, Mac OSX and BeOS. It depends on libebml
+to work.

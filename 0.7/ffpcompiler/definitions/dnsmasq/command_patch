@@ -1,0 +1,8 @@
+#  dnsmasq.conf
+#  /var/...
+sed -i \
+    -e "/CONFFILE/ s@CONFFILE.*@CONFFILE \"$CSYSCONFDIR/dnsmasq.conf\"@" \
+    -e "s@/var/@$CPREFIX&@g" \
+    src/config.h
+sed -i 's!#ifndef CONFFILE "/ffp/etc/dnsmasq.conf"!#ifndef CONFFILE!g' src/config.h
+

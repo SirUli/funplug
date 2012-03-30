@@ -1,0 +1,3 @@
+#/usr/bin/env is not available
+sed -ie 's!/usr/bin/env!/ffp/bin/env!g' doc/texi2pod.pl
+

@@ -1,0 +1,8 @@
+#!/ffp/bin/sh
+
+export PN=libcue
+export PV=1.4.0
+export PR=1
+export SRC_URI="http://switch.dl.sourceforge.net/project/libcue/libcue/$PV/libcue-$PV.tar.bz2"
+export CONFIGURE_ARGS="--prefix=$CPREFIX"
+export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_patch func_configure func_make func_make_install func_dir_ffp func_dir_install func_makepkg"

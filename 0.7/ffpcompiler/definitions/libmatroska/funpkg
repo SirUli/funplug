@@ -1,0 +1,10 @@
+#!/ffp/bin/sh
+
+export PN=libmatroska
+export PV=1.3.0
+export PR=1
+export SRC_URI="http://dl.matroska.org/downloads/libmatroska/libmatroska-$PV.tar.bz2"
+export CONFIGURE_ARGS="--prefix=$CPREFIX"
+export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_patch func_configure func_make func_make_install func_dir_ffp func_dir_install func_makepkg"
+export COMMAND_MAKE="cd make/linux && make staticlib"
+export COMMAND_MAKE_INSTALL="cd make/linux && make install_staticlib install_headers"

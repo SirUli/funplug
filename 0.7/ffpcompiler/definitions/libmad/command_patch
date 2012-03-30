@@ -1,0 +1,1 @@
+sed -ie 's!optimize="$optimize -fforce-mem"!#optimize="$optimize -fforce-mem"!g' configure

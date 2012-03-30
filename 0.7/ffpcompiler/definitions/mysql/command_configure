@@ -1,0 +1,12 @@
+export CFLAGS="-I/ffp/include -O2"
+cmake \
+-DCMAKE_INSTALL_PREFIX=/ffp/ \
+-DMYSQL_DATADIR=/srv/mysql/ \
+-DMYSQL_UNIX_ADDR=$CPREFIX/var/run/mysql/mysql.sock \
+-DWITH_SSL=yes \
+-DCMAKE_BUILD_TYPE=MinSizeRel \
+-DENABLE_DEBUG_SYNC=OFF \
+-DDEFAULT_CHARSET=utf8 \
+-DWITH_COMMENT='Compiled by Uli (wolf-u.li) for the fun_plug 0.7' \
+-DWITH_EMBEDDED_SERVER=ON \
+-DDEFAULT_COLLATION=utf8_general_ci 

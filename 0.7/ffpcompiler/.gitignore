@@ -1,0 +1,10 @@
+config/*
+destdir/*
+ideas
+legacy
+logs/*
+release/*
+scripts
+temp/*
+work/*
+

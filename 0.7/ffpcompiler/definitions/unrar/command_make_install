@@ -1,0 +1,2 @@
+mkdir -p $D$CPREFIX/bin/
+install -m 0755 unrar $D$CPREFIX/bin/

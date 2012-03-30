@@ -1,0 +1,1 @@
+sed -i.bak "s@/usr/local@$D$CPREFIX@" make/linux/Makefile

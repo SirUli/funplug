@@ -1,0 +1,13 @@
+#/usr/bin/env is not available
+cd $E
+for ENVSCRIPT in $(grep -rl "/usr/bin/env" $E); do
+    sed -ie 's!/usr/bin/env!/ffp/bin/env!g' $ENVSCRIPT
+done
+
+for ENVSCRIPT in $(grep -rl "/usr/bin/python" $E); do
+    sed -ie 's!/usr/bin/python!/ffp/bin/python!g' $ENVSCRIPT
+done
+
+for ENVSCRIPT in $(grep -rl "/usr/bin/perl" $E); do
+    sed -ie 's!/usr/bin/python!/ffp/bin/perl!g' $ENVSCRIPT
+done
