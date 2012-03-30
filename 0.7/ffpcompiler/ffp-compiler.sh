@@ -147,65 +147,78 @@ function func_dir_ffp {
 ###############################################################################
 # Download the package
 function func_download_distfile {
-	if [[ $(ls -1 $DIR_DIST|wc -l) -eq 0 ]]; then
-		cd $DIR_DIST
-		wget $SRC_URI
-	else
-		func_echo "There are files in $DIR_DIST"
-		func_echo "therefore no download is started. If you want to redownload,"
-		func_echo "please delete all files in this directory"
-	fi
+    if [[ $(ls -1 $DIR_DIST|wc -l) -eq 0 ]]; then
+        if [[ ! -f $X/command_download_distfile ]]; then        
+            cd $DIR_DIST
+            wget $SRC_URI
+        else
+            # Run the file with custom commands
+            chmod +x $X/command_download_distfile
+            $X/command_download_distfile
+        fi
+    else
+        func_echo "There are files in $DIR_DIST"
+        func_echo "therefore no download is started. If you want to redownload,"
+        func_echo "please delete all files in this directory"
+    fi
 }
 ###############################################################################
 # Unpack the package
 function func_unpack_distfile {
     cd $W
-    for FILENAME in $(ls -1 $DIR_DIST); do
-        # Stolen from svn://inreto.de/svn/dns323/funplug/trunk/source/Make.sh
-        FILEPATH=$DIR_DIST/$FILENAME
-        if [[ -d "$FILEPATH" ]]; then
-            echo "Copying directory $(basename $FILEPATH)"
-            tar cf - -C $DIR_DIST --exclude=.svn --exclude=.git --exclude=CVS $FILENAME | tar xf -
-        elif [ -r "$FILEPATH" ]; then
-            echo "Unpacking $(basename $FILEPATH)"
-            case "$FILEPATH" in
-                *.tar.bz2)
-                    echo "This is a .tar.bz2-File - Unpacking"
-                    tar xjf $FILEPATH
-                    ;;
-                *.tar.gz | *.tgz)
-                    echo "This is a .tar.gz/.tgz-File - Unpacking"
-                    tar xzf $FILEPATH
-                    ;;
-                *.tar.xz | *.txz)
-                    echo "This is a .tar.xz/.txz-File - Unpacking"
-                    tar xJf $FILEPATH
-                    ;;
-                *.tar)
-                    echo "This is a .tar.bz2-File - Unpacking"
-                    tar xf $FILEPATH
-                    ;;
-                *.zip)
-                    echo "This is a .zip-File - Unpacking"
-                    unzip $FILEPATH
-                    ;;
-                *.1)
-                    echo "This file is a double file - Deleting"
-                    rm $FILEPATH
-                    ;;
-                *)
-                    die "$(basename $FILEPATH): Don't know how to unpack"
-                    ;;
-            esac
-        else
-            die "$FILENAME: No archive found"
-        fi
-    done
+    if [[ ! -f $X/command_unpack_distfile ]]; then
+        for FILENAME in $(ls -1 $DIR_DIST); do
+            # Stolen from svn://inreto.de/svn/dns323/funplug/trunk/source/Make.sh
+            FILEPATH=$DIR_DIST/$FILENAME
+            if [[ -d "$FILEPATH" ]]; then
+                echo "Copying directory $(basename $FILEPATH)"
+                tar cf - -C $DIR_DIST --exclude=.svn --exclude=.git --exclude=CVS $FILENAME | tar xf -
+            elif [ -r "$FILEPATH" ]; then
+                echo "Unpacking $(basename $FILEPATH)"
+                case "$FILEPATH" in
+                    *.tar.bz2)
+                        echo "This is a .tar.bz2-File - Unpacking"
+                        tar xjf $FILEPATH
+                        ;;
+                    *.tar.gz | *.tgz)
+                        echo "This is a .tar.gz/.tgz-File - Unpacking"
+                        tar xzf $FILEPATH
+                        ;;
+                    *.tar.xz | *.txz)
+                        echo "This is a .tar.xz/.txz-File - Unpacking"
+                        tar xJf $FILEPATH
+                        ;;
+                    *.tar)
+                        echo "This is a .tar.bz2-File - Unpacking"
+                        tar xf $FILEPATH
+                        ;;
+                    *.zip)
+                        echo "This is a .zip-File - Unpacking"
+                        unzip $FILEPATH
+                        ;;
+                    *.1)
+                        echo "This file is a double file - Deleting"
+                        rm $FILEPATH
+                        ;;
+                    *)
+                        die "$(basename $FILEPATH): Don't know how to unpack"
+                        ;;
+                esac
+            else
+                die "$FILENAME: No archive found"
+            fi
+        done
+    else
+        # Run the file with custom commands
+        chmod +x $X/command_unpack_distfile
+        $X/command_unpack_distfile
+    fi
 }
 ###############################################################################
 function func_patch {
     if [[ -f $X/command_patch ]]; then
         cd $E
+        # Run the file with custom commands
         chmod +x $X/command_patch
         $X/command_patch
     fi
@@ -248,6 +261,7 @@ function func_configure {
         echo "LDFLAGS=$FFP_LDFLAGS"
         CFLAGS="$FFP_CFLAGS" LDFLAGS="$FFP_LDFLAGS" ./configure $CONFIGURE_ARGS
     else
+        # Run the file with custom commands
         chmod +x $X/command_configure
         $X/command_configure
     fi
@@ -267,6 +281,7 @@ function func_make {
         COMMAND_MAKE=${COMMAND_MAKE:=$STOCK_COMMAND_MAKE}
         eval $COMMAND_MAKE
     else
+        # Run the file with custom commands
         chmod +x $X/command_make
         $X/command_make
     fi
@@ -280,6 +295,7 @@ function func_make_install {
         COMMAND_MAKE_INSTALL=${COMMAND_MAKE_INSTALL:=$STOCK_COMMAND_MAKE_INSTALL}
         eval $COMMAND_MAKE_INSTALL
     else
+        # Run the file with custom commands
         chmod +x $X/command_make_install
         $X/command_make_install
     fi
@@ -288,8 +304,14 @@ function func_make_install {
 # Wrapper for makepkg
 function func_makepkg {
     cd $D
-    PKGDIR=$F /ffp/sbin/makepkg $PN $PV $PR
-    export PACKAGELOCATION=$(ls -1 $F/$PN-$PV-*-$PR.txz)
+    if [[ ! -f $X/command_makepkg ]]; then
+        PKGDIR=$F /ffp/sbin/makepkg $PN $PV $PR
+        export PACKAGELOCATION=$(ls -1 $F/$PN-$PV-*-$PR.txz)
+    else
+        # Run the file with custom commands
+        chmod +x $X/command_makepkg
+        $X/command_makepkg
+    fi
 }
 
 # Copies the new package to the release-directory
@@ -298,7 +320,7 @@ function func_copynewpackage {
         cp $PACKAGELOCATION $DIR_RELEASE/$FFPVERSION/$FFP_ARCH/packages/
     fi
     for PACKAGENAME in $(ls -1 $DIR_RELEASE/$FFPVERSION/$FFP_ARCH/packages/*.txz|sort); do
-	echo $PACKAGENAME
+    echo $PACKAGENAME
     done
 }
 
@@ -398,8 +420,8 @@ do
         else
             # Import the definition-file
             cd $DIR_DEFINITIONS/$FILE_DEFINITIONS
-	    if [[ -f funpkg ]]; then
-	        . ./funpkg
+        if [[ -f funpkg ]]; then
+            . ./funpkg
             elif [[ -f $FILE_DEFINITIONS.funpkg ]]; then
                 . ./$FILE_DEFINITIONS.funpkg
             fi
