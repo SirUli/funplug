@@ -1,0 +1,9 @@
+mkdir -p $D/ffp/share/man/man8/
+mkdir -p $D/ffp/share/man/man5/
+mkdir -p $D/ffp/sbin/
+/ffp/bin/install -o root -g root -m 644 sysklogd.8 $D/ffp/share/man/man8/sysklogd.8
+/ffp/bin/install -o root -g root -m 644 syslogd.8 $D/ffp/share/man/man8/syslogd.8
+/ffp/bin/install -o root -g root -m 644 syslog.conf.5 $D/ffp/share/man/man5/syslog.conf.5
+/ffp/bin/install -o root -g root -m 644 klogd.8 $D/ffp/share/man/man8/klogd.8
+/ffp/bin/install -m 500 -s syslogd $D/ffp/sbin/syslogd
+/ffp/bin/install -m 500 -s klogd $D/ffp/sbin/klogd

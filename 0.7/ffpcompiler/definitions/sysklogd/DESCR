@@ -1,0 +1,9 @@
+This package implements two system log daemons. The syslogd daemon is an
+enhanced version of the standard Berkeley utility program. This daemon is
+responsible for providing logging of messages received from programs and
+facilities on the local host as well as from remote hosts.
+
+The klogd daemon listens to kernel message sources and is responsible for
+prioritizing and processing operating system messages. The klogd daemon can 
+run as a client of syslogd or optionally as a standalone program. Klogd can
+now be used to decode EIP addresses if it can determine a System.map file. 

@@ -1,0 +1,7 @@
+#!/ffp/bin/sh
+
+export PN=sysklogd
+export PV=1.5
+export PR=1
+export SRC_URI="http://www.infodrom.org/projects/sysklogd/download/sysklogd-$PV.tar.gz"
+export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_patch func_make func_make_install func_dir_ffp func_dir_install func_makepkg"

@@ -1,0 +1,1 @@
+sed -i -e "s+-O3+${CFLAGS}+" -e "s+/usr/+/ffp/+" Makefile

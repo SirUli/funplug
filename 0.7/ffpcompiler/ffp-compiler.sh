@@ -37,7 +37,7 @@
 #            DESCR
 #            doinst.sh
 ###############################################################################
-export DIR_ROOT=/mnt/HD/HD_a2/ffpcompiler
+export DIR_ROOT=$(cd $(dirname $0) && pwd);
 export DIR_CONFIG=$DIR_ROOT/config
 export DIR_DEFINITIONS=$DIR_ROOT/definitions
 export DIR_DEST=$DIR_ROOT/destdir
