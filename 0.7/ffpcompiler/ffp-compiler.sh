@@ -331,6 +331,7 @@ function func_makerelease {
         if [[ $(ls -1 $DIRNAME/*.txz 2> /dev/null|wc -l) -gt 0 ]]; then
             cd $DIRNAME
             md5sum *.txz > CHECKSUMS.md5
+            ls -1|egrep -v "CHECKSUMS|PACKAGES" > PACKAGES.txt
             SHORTDIRNAME=$(echo $DIRNAME|sed -e "s#$DIR_RELEASE/##g")
             func_echo "Found the following packages in $SHORTDIRNAME:"
             cat CHECKSUMS.md5
