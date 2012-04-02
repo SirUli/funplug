@@ -1,0 +1,6 @@
+syntax "makefile" "^Makefile\.?"
+color red "[:=]"
+color magenta "\<(if|ifeq|else|endif)\>"
+color blue "\$\{.*}"
+color brightblue "\w+:"
+color green "#.*$"

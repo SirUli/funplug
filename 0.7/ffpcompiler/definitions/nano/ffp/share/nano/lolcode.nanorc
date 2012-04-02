@@ -1,0 +1,55 @@
+## Here iz TEH syntax highlight for lolcode 
+## based on the example for C/C++.
+## no can has moar color
+syntax "lolcode" "\.lol"
+## things
+color brightred "\<[A-Z_][0-9A-Z_]+\>"
+color brightred "\<[[:alnum:]]*\>"
+
+##
+## types
+color green "\<(YARN|NUMBR|TROOF|BUKKIT|NOOB)\>"
+##
+## stuff
+color brightgreen "\<(LINE|WORD|LETTAR)\>"
+##
+## aritmetric (TIEMZ xould be in TIEM?) anyway, all 3 stay as a keyword
+## also the MODZ (not in yr spec 1.1) iz highlighted for modulo
+color brightgreen "\<(UP|UPZ|NERF|NERFZ|TIEM|TIEMZ|TIEMZD|OVAR|OVARZ|MODZ)\>"
+##
+## condixonal operatorz. 
+color brightgreen "\<(BIGR THAN|SMALR THAN|LIEK|NOT|AND|OR|XOR|\!|\~|\&\&)|\|\||\||\^)\>"
+##
+## 4fun
+color red "\<(PRON)\>" 
+##
+## varabal related
+color brightyellow "\<(BYES|DIAF|GIMMEH|OUTTA|I HAS A|ITZ|IN MAH|LOL|R|VISIBLE|INVISIBLE)\>"
+##
+## l00p
+color brightyellow "\<(IM IN YR|IZ|YARLY|NOWAI|KTHX|WTF|OIC)\>"
+##
+## added the keywords for dealing with file. 
+## sorry for the "low lol lolcode" <-- say it again :D
+color brightyellow "\<(CLOZ|OPEN|REED|RIT)\>"
+##
+## loops' stuff. added the keywords for try/exepshun
+color magenta "\<(GTFO|PLZ|AWSUM THX|O NOES)\>"
+##
+## begin and end lolcode
+color brightcyan "^[[:space:]]*(HAI|CAN HAS|KTHXBYE|)"
+##
+## not sure what it does, leave it
+#color brightmagenta "'([^'\]|(\\["'abfnrtv\\]))'" "'\\(([0-3]?[0-7]{1,2}))'" "'\\x[0-9A-Fa-f]{1,2}'"
+##
+## String highlighting.  You will in general want your comments and
+## strings to come last, because syntax highlighting rules will be
+## applied in the order they are read in. <-- said the previous c/c++ s.h. writer
+color brightwhite "<[^= 	]*>" ""(\\.|[^"])*""
+##
+## This string is VERY resource intensive! <-- omg! let's use it :D
+color brightyellow start=""(\\.|[^"])*\\[[:space:]]*$" end="^(\\.|[^"])*""
+##
+## Comment highlighting
+color brightblue "BTW.*"
+color cyan start="OBTW" end="TLDR"

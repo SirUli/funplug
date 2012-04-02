@@ -411,7 +411,7 @@ function func_run_command {
 ###############################################################################
 # Chooser
 PS3="Select package to compile: "
-select FILE_DEFINITIONS in '--> SKIP THIS' $(ls -1 $DIR_DEFINITIONS)
+select FILE_DEFINITIONS in '--> SKIP THIS' $(ls -1 $DIR_DEFINITIONS|grep -v '_template')
 do
     if [[ -n $FILE_DEFINITIONS ]]; then
         func_echo "You have chosen: $FILE_DEFINITIONS"

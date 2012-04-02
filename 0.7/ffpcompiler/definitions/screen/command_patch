@@ -1,0 +1,19 @@
+cd $E
+# Patch against Bug:
+# -----------------------------------------------------------------------------
+# gcc -c -I. -I.    -I/ffp/include -O2 screen.c
+# In file included from screen.h:41:0,
+#                  from screen.c:81:
+# sched.h:25:8: error: redefinition of 'struct event'
+# ./sched.h:25:8: note: originally defined here
+# make: *** [screen.o] Error 1
+# -----------------------------------------------------------------------------
+patch -p1 < $X/screen-sched.patch
+
+# Patch against Bug (Found under https://build.opensuse.org/package/view_file?file=screen-4.0.3-stropts.patch&package=screen&project=Intel%3AMoblin2&rev=06d824d65751f5d73dabc044d6209f19):
+# -----------------------------------------------------------------------------
+# pty.c:38:26: fatal error: sys/stropts.h: No such file or directory
+# compilation terminated.
+# make: *** [pty.o] Error 1
+# -----------------------------------------------------------------------------
+patch -p1 < $X/screen-stropts.patch

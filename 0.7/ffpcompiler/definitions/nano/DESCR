@@ -1,0 +1,5 @@
+In computing, nano is a curses-based text editor for Unix and Unix-like
+systems. It is a clone of Pico, the editor of the Pine email client. nano
+aims to emulate the functionality and easy-to-use interface of Pico, but
+without the tight mailer integration of the Pine/Pico package.
+[pkgsrc]
