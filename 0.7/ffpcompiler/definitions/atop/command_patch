@@ -1,0 +1,1 @@
+sed -i -e "s+-O2+-Os+" -e "s+/usr+/ffp+" -e "s+/etc+/ffp/etc+" -e "s+/var+/ffp/var+" Makefile

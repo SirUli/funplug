@@ -1,6 +1,5 @@
 config/*
 destdir/*
-ideas
 legacy
 logs/*
 release/*
