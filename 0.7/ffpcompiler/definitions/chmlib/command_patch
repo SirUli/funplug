@@ -1,0 +1,1 @@
+sed -i -e "s+__i386__+__i386__ || __arm__+" src/chm_lib.c
