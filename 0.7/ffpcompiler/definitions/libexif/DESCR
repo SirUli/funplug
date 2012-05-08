@@ -1,0 +1,5 @@
+The libexif C EXIF library
+- is a library written in pure C.
+- reads and writes EXIF metainformation from and to image files.
+- is licensed under the GNU LESSER GENERAL PUBLIC LICENSE Version 2.1 (LGPL).
+- runs under POSIX systems (e.g. GNU/Linux, xBSD, MacOS X, etc.) and Win32. Win64 untested.

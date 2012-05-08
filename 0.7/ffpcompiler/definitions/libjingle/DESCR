@@ -1,0 +1,4 @@
+Libjingle, the Google Talk Voice and P2P Interoperability Library, is a set of
+components to interoperate with Google Talk's peer-to-peer voice and video
+chat. The package includes source code for Google's implementation of the XMPP
+Jingle extensions. 
