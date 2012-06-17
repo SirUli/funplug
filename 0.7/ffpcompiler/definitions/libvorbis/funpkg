@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=libvorbis
-export PV=1.3.2
+export PV=1.3.3
 export PR=1
 export SRC_URI="http://downloads.xiph.org/releases/vorbis/libvorbis-$PV.tar.gz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"
