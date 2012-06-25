@@ -305,6 +305,10 @@ function func_make_install {
 function func_makepkg {
     cd $D
     if [[ ! -f $X/command_makepkg ]]; then
+	func_echo "Package directory: $F"
+	func_echo "Package name:      $PN"
+	func_echo "Package version:   $PV"
+	func_echo "Package revision:  $PR"
         PKGDIR=$F /ffp/sbin/makepkg $PN $PV $PR
         export PACKAGELOCATION=$(ls -1 $F/$PN-$PV-*-$PR.txz)
     else
@@ -458,6 +462,23 @@ do
         func_echo "Invalid choice ($YESNOPUBLISH). Please try again";
     fi
 done
+
+echo ""
+echo ""
+func_echo "Version report"
+for DIRNAME in $(ls -1 $DIR_DEFINITIONS|grep -v '_template'); do
+	DIRPATH=$DIR_DEFINITIONS/$DIRNAME
+	if [[ -f $DIRPATH/funpkg ]]; then
+		. $DIRPATH/funpkg
+	elif [[ -f $DIRPATH/$DIRNAME.funpkg ]]; then
+		. $DIRPATH/$DIRNAME.funpkg
+	else
+		func_echo "No file found in $DIRNAME"
+	fi
+	echo " - $PN - $PV - $PR"
+done
+echo ""
+echo ""
 
 func_echo "Done ffp-compiler.sh"
 # EXIT LOGGING AND CLEAN UP
