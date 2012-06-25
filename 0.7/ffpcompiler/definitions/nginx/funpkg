@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=nginx
-export PV=1.0.14
+export PV=1.2.1
 export PR=1
 export SRC_URI="http://nginx.org/download/nginx-$PV.tar.gz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX --prefix=$CPREFIX/share --sbin-path=$CPREFIX/sbin/nginx --conf-path=$CPREFIX/etc/examples/nginx/nginx.conf --pid-path=$CPREFIX/var/run/nginx.pid --lock-path=$CPREFIX/var/run/nginx.lck --error-log-path=$CPREFIX/var/log/nginx/error.log --http-log-path=$CPREFIX/var/log/nginx/access.log --http-proxy-temp-path=$CPREFIX/tmp/nginx/proxy/ --http-fastcgi-temp-path=$CPREFIX/tmp/nginx/fastcgi/ --http-client-body-temp-path=/var/tmp/nginx/client/  --with-http_dav_module --with-http_ssl_module --with-http_stub_status_module  --with-http_sub_module --with-http_secure_link_module --with-http_realip_module --with-http_random_index_module --with-http_addition_module --with-mail --with-mail_ssl_module"
