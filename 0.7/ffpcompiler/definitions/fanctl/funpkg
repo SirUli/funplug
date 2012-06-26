@@ -1,0 +1,6 @@
+#!/ffp/bin/sh
+
+export PN=fanctl
+export PV=2
+export PR=1
+export COMMANDS="func_init_pkg_work_dir func_dir_ffp func_dir_install func_makepkg"

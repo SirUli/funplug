@@ -465,18 +465,34 @@ done
 
 echo ""
 echo ""
-func_echo "Version report"
-for DIRNAME in $(ls -1 $DIR_DEFINITIONS|grep -v '_template'); do
-	DIRPATH=$DIR_DEFINITIONS/$DIRNAME
-	if [[ -f $DIRPATH/funpkg ]]; then
-		. $DIRPATH/funpkg
-	elif [[ -f $DIRPATH/$DIRNAME.funpkg ]]; then
-		. $DIRPATH/$DIRNAME.funpkg
-	else
-		func_echo "No file found in $DIRNAME"
-	fi
-	echo " - $PN - $PV - $PR"
+
+PS3='Show version report?: '
+select YESNOVERSIONS in 'Yes' 'No'
+do
+    if [[ -n $YESNOVERSIONS ]]; then
+        func_echo "You have chosen: $YESNOVERSIONS"
+        if [[ $YESNOVERSIONS = "Yes" ]]; then
+            func_echo "Version report"
+		for DIRNAME in $(ls -1 $DIR_DEFINITIONS|grep -v '_template'); do
+		        DIRPATH=$DIR_DEFINITIONS/$DIRNAME
+		        if [[ -f $DIRPATH/funpkg ]]; then
+		                . $DIRPATH/funpkg
+		        elif [[ -f $DIRPATH/$DIRNAME.funpkg ]]; then
+		                . $DIRPATH/$DIRNAME.funpkg
+		        else
+		                func_echo "No file found in $DIRNAME"
+		        fi
+		        echo " - $PN - $PV - $PR"
+		done
+        elif [[ $YESNOVERSIONS = "No" ]]; then
+            func_echo "Not showing version report."
+        fi
+        break
+    else
+        func_echo "Invalid choice ($YESNOVERSIONS). Please try again";
+    fi
 done
+
 echo ""
 echo ""
 

@@ -1,0 +1,30 @@
+# This file is ONLY suitable for Vanilla-Kernels!
+#
+# All temperatures have to be in Celsius multiplied with 1000
+
+# interval for re-checking in seconds
+interval=30
+
+#Temperature
+temp_lo=37000
+temp_hi=50000
+
+#Fanspeed
+pwm_lo=50
+pwm_hi=175
+
+# If this temperature is reached, the NAS will be shutdown.
+temp_crit=51000
+temp_crit_command="touch /mnt/HD_a2/OVERHEAT; sync; touch /tmp/shutdown"
+
+# Some settings for getting the fanspeed,temperature and setting the pwm
+sys_temp_input = /sys/class/i2c-adapter/i2c-0/0-0048/temp1_input
+sys_fan_input  = /sys/class/i2c-adapter/i2c-0/0-003e/fan1_input
+sys_pwm	       = /sys/class/i2c-adapter/i2c-0/0-003e/pwm1
+
+# Fan stops below temp_stop and resumes above temp_lo
+temp_stop=37000
+# This speed will be set, if the temperature is below temp_lo
+pwm_stop=0
+# This speed will be set for one second when the fan resumes (Just to start it)
+pwm_start=3200

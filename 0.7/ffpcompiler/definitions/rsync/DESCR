@@ -1,0 +1,7 @@
+rsync - a fast, versatile, remote (and local) file-copying tool
+
+rsync is an open source utility that provides fast incremental file
+transfer. rsync is freely available under the GNU General Public
+License and is currently being maintained by Wayne Davison.
+
+Homepage: http://rsync.samba.org/
