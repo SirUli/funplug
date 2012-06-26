@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=ffmpeg
-export PV=0.10.2
+export PV=0.11.1
 export PR=1
 export SRC_URI="http://ffmpeg.org/releases/ffmpeg-$PV.tar.gz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX --disable-static --enable-shared --enable-gpl --enable-nonfree --enable-small --disable-encoder=aac --disable-decoder=aac --disable-armv6 --disable-armv6t2 --disable-armvfp"

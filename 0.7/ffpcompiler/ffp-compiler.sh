@@ -150,7 +150,7 @@ function func_download_distfile {
     if [[ $(ls -1 $DIR_DIST|wc -l) -eq 0 ]]; then
         if [[ ! -f $X/command_download_distfile ]]; then        
             cd $DIR_DIST
-            wget $SRC_URI
+            wget --no-check-certificate $SRC_URI
         else
             # Run the file with custom commands
             chmod +x $X/command_download_distfile
