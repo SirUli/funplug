@@ -1,0 +1,6 @@
+The stunnel program is designed to work as an SSL encryption wrapper between
+remote client and local (inetd-startable) or remote server. It can be used to
+add SSL functionality to commonly used inetd daemons like POP2, POP3, and IMAP
+servers without any changes in the programs' code. Stunnel uses OpenSSL
+libraries for cryptography, so it supports whatever cryptographic algorithms
+you compiled into your library. 
