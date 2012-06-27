@@ -1,0 +1,4 @@
+This is a public repository of all known ID's used in USB devices: ID's of
+vendors, devices, subsystems and device classes. It is used in various
+programs (e.g., The USB Utilities) to display full human-readable names
+instead of cryptic numeric codes. 

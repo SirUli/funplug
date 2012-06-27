@@ -1,0 +1,8 @@
+#!/ffp/bin/sh
+
+export PN=libusb-compat
+export PV=0.1.4
+export PR=1
+export SRC_URI="http://switch.dl.sourceforge.net/project/libusb/libusb-compat-0.1/libusb-compat-$PV/libusb-compat-$PV.tar.bz2"
+export CONFIGURE_ARGS="--prefix=$CPREFIX"
+export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_patch func_configure func_make func_make_install func_dir_ffp func_dir_install func_makepkg"

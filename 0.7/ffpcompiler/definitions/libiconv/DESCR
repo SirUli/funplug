@@ -1,0 +1,9 @@
+For historical reasons, international text is often encoded using a language or
+country dependent character encoding. With the advent of the internet and the
+frequent exchange of text across countries - even the viewing of a web page
+from a foreign country is a "text exchange" in this context -, conversions
+between these encodings have become important. They have also become a problem,
+because many characters which are present in one encoding are absent in many
+other encodings. To solve this mess, the Unicode encoding has been created.
+It is a super-encoding of all others and is therefore the default encoding
+for new text formats like XML. 

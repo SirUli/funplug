@@ -1,0 +1,1 @@
+make install exec_prefix=${D}${CPREFIX} prefix=${D}${CPREFIX}

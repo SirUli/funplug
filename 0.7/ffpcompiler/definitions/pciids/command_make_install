@@ -1,0 +1,3 @@
+DIR_PCIIDS=${D}${CPREFIX}/var/lib/misc
+mkdir -p $DIR_PCIIDS
+cp $DIR_DIST/pci.ids $DIR_PCIIDS/

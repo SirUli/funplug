@@ -1,0 +1,8 @@
+#!/ffp/bin/sh
+
+export PN=autossh
+export PV=1.4c
+export PR=1
+export SRC_URI="http://www.harding.motd.ca/autossh/autossh-$PV.tgz"
+export CONFIGURE_ARGS="--prefix=$CPREFIX"
+export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_patch func_configure func_make func_make_install func_dir_ffp func_dir_install func_makepkg"

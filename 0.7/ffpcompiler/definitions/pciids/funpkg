@@ -1,0 +1,8 @@
+#!/ffp/bin/sh
+
+export PN=pciids
+export PV=2.2
+export PR=20120627
+export SRC_URI="http://pciids.sourceforge.net/v${PV}/pci.ids"
+export CONFIGURE_ARGS="--prefix=$CPREFIX"
+export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_make_install func_dir_install func_makepkg"
