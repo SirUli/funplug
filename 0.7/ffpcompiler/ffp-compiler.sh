@@ -90,6 +90,37 @@ function func_create_path {
     fi
     return 0
 }
+
+###############################################################################
+# Requires one argument:
+#  1: functionname
+# Example: func_pre makepkg
+# This will then execute command_pre_makepg
+function func_pre {
+    func_step pre $1
+}
+
+# Requires one argument:
+#  1: functionname
+# Example: func_post makepkg
+# This will then execute command_post_makepg
+function func_post {
+	func_step post $1
+}
+
+# Requires two arguments:
+#  1: pre or post
+#  2: functionname
+# Example: func_step pre makepkg
+# This will then execute command_pre_makepg
+function func_step {
+	FILENAME=$X/command_{$1}_{$2}
+    if [[ -f $FILENAME ]]; then
+        # Run the file with custom commands
+        chmod +x $FILENAME
+        $FILENAME
+    fi
+}
 ###############################################################################
 # Initialize directory structure (should be created partially already, but
 # just to make sure)
@@ -309,8 +340,10 @@ function func_makepkg {
 	func_echo "Package name:      $PN"
 	func_echo "Package version:   $PV"
 	func_echo "Package revision:  $PR"
+	func_pre makepkg
         PKGDIR=$F /ffp/sbin/makepkg $PN $PV $PR
         export PACKAGELOCATION=$(ls -1 $F/$PN-$PV-*-$PR.txz)
+	func_post makepkg
     else
         # Run the file with custom commands
         chmod +x $X/command_makepkg

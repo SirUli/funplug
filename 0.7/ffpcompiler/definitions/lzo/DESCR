@@ -1,0 +1,8 @@
+LZO is a data compression library which is suitable for data
+de-/compression in real-time. This means it favours speed over
+compression ratio.
+
+LZO and the LZO algorithms and implementations are distributed under
+the terms of the GNU General Public License (GPL) . Special licenses
+for commercial and other applications are available by contacting the
+author.

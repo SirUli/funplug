@@ -1,2 +1,3 @@
 make INSTALL_ROOT=$D install
+cd $D
 rm -rf .registry .channels .filemap .lock .depdblock .depdb

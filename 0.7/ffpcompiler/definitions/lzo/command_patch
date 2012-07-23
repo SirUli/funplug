@@ -1,0 +1,2 @@
+mkdir -p $D/ffp/share/doc/$PN-$PV
+cp -r AUTHORS BUGS COPYING ChangeLog INSTALL NEWS README THANKS doc $D/ffp/share/doc/$PN-$PV

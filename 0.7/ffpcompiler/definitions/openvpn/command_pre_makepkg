@@ -1,0 +1,4 @@
+cd $E/easy-rsa/2.0/
+cp -R * $D$CPREFIX/share/openvpn/easyrsa/
+chown root:root -R $D$CPREFIX/share/openvpn/easyrsa/
+chmod 644 -R $D$CPREFIX/share/openvpn/easyrsa/
