@@ -1,0 +1,5 @@
+cd $E
+makeinfo --html --no-split -o doc/pinentry_nochunks.html doc/pinentry.texi
+makeinfo --plaintext       -o doc/pinentry.txt           doc/pinentry.texi
+install -v -m755 -d ${CPREFIX}/share/doc/pinentry-0.8.1/html
+install -v -m644    README doc/pinentry{_*.html,.txt,.texi} ${CPREFIX}/share/doc/pinentry-0.8.1
