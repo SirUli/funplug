@@ -1,8 +1,8 @@
 #!/ffp/bin/sh
 
-export PN=curl
-export PV=7.27.0
+export PN=pth
+export PV=2.0.7
 export PR=1
-export SRC_URI="http://curl.haxx.se/download/curl-$PV.tar.bz2"
-export CONFIGURE_ARGS="--prefix=$CPREFIX"
+export SRC_URI="ftp://ftp.gnu.org/gnu/pth/pth-$PV.tar.gz"
+export CONFIGURE_ARGS="--prefix=$CPREFIX --with-mctx-mth=sjlj --with-mctx-dsp=ssjlj --with-mctx-stk=sas"
 export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_patch func_configure func_make func_make_install func_dir_ffp func_dir_install func_makepkg"

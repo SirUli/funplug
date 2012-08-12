@@ -105,7 +105,7 @@ function func_pre {
 # Example: func_post makepkg
 # This will then execute command_post_makepg
 function func_post {
-	func_step post $1
+    func_step post $1
 }
 
 # Requires two arguments:
@@ -114,7 +114,7 @@ function func_post {
 # Example: func_step pre makepkg
 # This will then execute command_pre_makepg
 function func_step {
-	FILENAME=$X/command_{$1}_{$2}
+    FILENAME=$X/command_{$1}_{$2}
     if [[ -f $FILENAME ]]; then
         # Run the file with custom commands
         chmod +x $FILENAME
@@ -184,6 +184,7 @@ function func_download_distfile {
             wget --no-check-certificate $SRC_URI
         else
             # Run the file with custom commands
+	    func_echo "command_download_distfile found, executing"
             chmod +x $X/command_download_distfile
             $X/command_download_distfile
         fi
@@ -241,6 +242,7 @@ function func_unpack_distfile {
         done
     else
         # Run the file with custom commands
+	func_echo "command_unpack_distfile found, executing"
         chmod +x $X/command_unpack_distfile
         $X/command_unpack_distfile
     fi
@@ -250,6 +252,7 @@ function func_patch {
     if [[ -f $X/command_patch ]]; then
         cd $E
         # Run the file with custom commands
+	func_echo "command_patch found, executing"
         chmod +x $X/command_patch
         $X/command_patch
     fi
@@ -290,9 +293,14 @@ function func_configure {
         export FFP_CFLAGS=${FFP_CFLAGS:=$STOCK_FFP_CFLAGS}
         echo "CFLAGS=$FFP_CFLAGS"
         echo "LDFLAGS=$FFP_LDFLAGS"
+	func_pre configure
         CFLAGS="$FFP_CFLAGS" LDFLAGS="$FFP_LDFLAGS" ./configure $CONFIGURE_ARGS
+	RC=$?
+	[[ $RC -gt 0 ]] && return $RC
+	func_post configure
     else
         # Run the file with custom commands
+	func_echo "command_configure found, executing"
         chmod +x $X/command_configure
         $X/command_configure
     fi
@@ -310,9 +318,14 @@ function func_make {
     if [[ ! -f $X/command_make ]]; then
         STOCK_COMMAND_MAKE="make"
         COMMAND_MAKE=${COMMAND_MAKE:=$STOCK_COMMAND_MAKE}
+	func_pre make
         eval $COMMAND_MAKE
+	RC=$?
+	[[ $RC -gt 0 ]] && return $RC
+	func_post make
     else
         # Run the file with custom commands
+	func_echo "command_make found, executing"
         chmod +x $X/command_make
         $X/command_make
     fi
@@ -324,9 +337,14 @@ function func_make_install {
     if [[ ! -f $X/command_make_install ]]; then
         STOCK_COMMAND_MAKE_INSTALL="make DESTDIR=$D install"
         COMMAND_MAKE_INSTALL=${COMMAND_MAKE_INSTALL:=$STOCK_COMMAND_MAKE_INSTALL}
+	func_pre make_install
         eval $COMMAND_MAKE_INSTALL
+	RC=$?
+	[[ $RC -gt 0 ]] && return $RC
+	func_post make_install
     else
         # Run the file with custom commands
+	func_echo "command_make_install found, executing"
         chmod +x $X/command_make_install
         $X/command_make_install
     fi
@@ -342,10 +360,13 @@ function func_makepkg {
 	func_echo "Package revision:  $PR"
 	func_pre makepkg
         PKGDIR=$F /ffp/sbin/makepkg $PN $PV $PR
+	RC=$?
+	[[ $RC -gt 0 ]] && return $RC
         export PACKAGELOCATION=$(ls -1 $F/$PN-$PV-*-$PR.txz)
 	func_post makepkg
     else
         # Run the file with custom commands
+	func_echo "command_makepkg found, executing"
         chmod +x $X/command_makepkg
         $X/command_makepkg
     fi
@@ -362,6 +383,9 @@ function func_copynewpackage {
 }
 
 function func_makerelease {
+    func_echo "Making release"
+    func_echo "DIR_RELEASE: $DIR_RELEASE"
+    func_echo "FFPVERSION: $FFPVERSION"
     mkdir -p $DIR_RELEASE/$FFPVERSION/arm/packages/
     mkdir -p $DIR_RELEASE/$FFPVERSION/oarm/packages/
     for DIRNAME in $(find $DIR_RELEASE -type d -exec echo {} \;); do
@@ -378,8 +402,10 @@ function func_makerelease {
 ###############################################################################
 # Publish to remote directory
 function func_publishrelease {
+    func_echo "Publishing release"
     func_makerelease
     cd $DIR_RELEASE
+    func_echo "executing $DIR_CONFIG/rsynctorepository.sh"
     chmod +x $DIR_CONFIG/rsynctorepository.sh
     $DIR_CONFIG/rsynctorepository.sh
 }
@@ -422,7 +448,7 @@ function func_run_command {
             func_echo ""
             func_echo "What do you want to do?"
             PS3='What do you want to do?: '
-            select COMPILESCRIPTFAILUREAGAIN in 'Run again' 'Exit' 'Run next'
+            select COMPILESCRIPTFAILUREAGAIN in 'Run again' 'Exit' 'Run next' 'Show environment & Exit'
             do
                 if [[ -n $COMPILESCRIPTFAILUREAGAIN ]]; then
                     func_echo "You have chosen: $COMPILESCRIPTFAILUREAGAIN"
@@ -432,6 +458,11 @@ function func_run_command {
                     elif [[ $COMPILESCRIPTFAILUREAGAIN = "Exit" ]]; then
                         # Action: Exit
                         echo "$PN;$PV;$PR;1" >> $STATUSLOG
+                        exit 1;
+                    elif [[ $COMPILESCRIPTFAILUREAGAIN = "Show environment & Exit" ]]; then
+			# Action: Show environment
+			env|sort
+			echo "$PN;$PV;$PR;1" >> $STATUSLOG
                         exit 1;
                     else
                         # Action: Run again

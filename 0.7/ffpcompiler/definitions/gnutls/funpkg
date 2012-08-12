@@ -1,7 +1,7 @@
 #!/ffp/bin/sh -xe
 
 export PN=gnutls
-export PV=3.0.21
+export PV=3.0.22
 export PR=1
 export SRC_URI="ftp://ftp.gnutls.org/pub/gnutls/gnutls-$PV.tar.xz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"
