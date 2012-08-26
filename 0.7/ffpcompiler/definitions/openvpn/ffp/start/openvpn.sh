@@ -19,7 +19,7 @@ openvpn_start()
 {
 	mkdir -p /dev/net
 	mknod /dev/net/tun c 10 200 > /dev/null 2>&1
-	insmod /ffp/lib/modules/kernel/$(uname -r)/drivers/net/tun.ko > /dev/null 2>&1
+	insmod /ffp/lib/modules/$(uname -r)/drivers/net/tun.ko > /dev/null 2>&1
 	
 	proc_start $command
 }

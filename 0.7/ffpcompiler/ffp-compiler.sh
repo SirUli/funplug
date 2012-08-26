@@ -387,7 +387,7 @@ function func_makerelease {
     func_echo "DIR_RELEASE: $DIR_RELEASE"
     func_echo "FFPVERSION: $FFPVERSION"
     mkdir -p $DIR_RELEASE/$FFPVERSION/arm/packages/
-    mkdir -p $DIR_RELEASE/$FFPVERSION/oarm/packages/
+    mkdir -p $DIR_RELEASE/$FFPVERSION/oabi/packages/
     for DIRNAME in $(find $DIR_RELEASE -type d -exec echo {} \;); do
         if [[ $(ls -1 $DIRNAME/*.txz 2> /dev/null|wc -l) -gt 0 ]]; then
             cd $DIRNAME
