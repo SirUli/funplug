@@ -194,6 +194,22 @@ function func_download_distfile {
         func_echo "please delete all files in this directory"
     fi
 }
+
+# To be used when running offline compilers
+function func_download_all_distfiles {
+	for DIRNAME in $(ls -1 $DIR_DEFINITIONS|grep -v '_template'); do
+                DIRPATH=$DIR_DEFINITIONS/$DIRNAME
+                if [[ -f $DIRPATH/funpkg ]]; then
+                        . $DIRPATH/funpkg
+                elif [[ -f $DIRPATH/$DIRNAME.funpkg ]]; then
+                        . $DIRPATH/$DIRNAME.funpkg
+                else
+                	func_echo "No file found in $DIRNAME"
+                fi
+		export X=$DIRPATH
+        	func_download_distfile
+	done
+}
 ###############################################################################
 # Unpack the package
 function func_unpack_distfile {
