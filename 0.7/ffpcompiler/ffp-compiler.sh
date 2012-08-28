@@ -460,6 +460,7 @@ function func_run_command {
         else
             # Run failed
             func_echo "Seems like something happened, Returncode was $COMPLIEPROGRAMRC";
+            func_echo "Package: $PN"
             func_echo "Please check the output carefully!"
             func_echo ""
             func_echo "What do you want to do?"
