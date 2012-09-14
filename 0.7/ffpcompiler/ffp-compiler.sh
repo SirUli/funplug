@@ -206,8 +206,8 @@ function func_download_all_distfiles {
                 else
                 	func_echo "No file found in $DIRNAME"
                 fi
-		export X=$DIRPATH
-        	func_download_distfile
+        	func_init_pkg_work_dir
+		func_download_distfile
 	done
 }
 ###############################################################################
