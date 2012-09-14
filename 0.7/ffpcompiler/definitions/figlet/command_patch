@@ -1,0 +1,1 @@
+sed -ie 's!/usr/local!/ffp!g' Makefile

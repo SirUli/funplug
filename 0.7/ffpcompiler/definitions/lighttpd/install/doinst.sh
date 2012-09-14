@@ -1,0 +1,1 @@
+echo "Please follow the tutorial of Uli for a configuration"
