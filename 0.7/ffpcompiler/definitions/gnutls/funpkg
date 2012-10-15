@@ -1,9 +1,9 @@
 #!/ffp/bin/sh -xe
 
 export PN=gnutls
-export PV=3.1.0
+export PV=3.1.3
 export PR=1
-export SRC_URI="ftp://ftp.gnutls.org/pub/gnutls/gnutls-$PV.tar.xz"
+export SRC_URI="ftp://ftp.gnutls.org/gnu/gnutls/gnutls-$PV.tar.xz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"
 export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_configure func_make func_make_install func_dir_ffp func_dir_install func_makepkg"
 
