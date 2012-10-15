@@ -1,0 +1,4 @@
+cd $E
+patch -p1 < $X/no_man.patch
+#patch -p1 -f < $X/man.patch
+aclocal -I m4 && automake --add-missing --copy && autoconf

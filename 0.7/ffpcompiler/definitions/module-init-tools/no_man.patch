@@ -1,0 +1,12 @@
+diff -ruN module-init-tools-orig/Makefile.in module-init-tools/Makefile.in
+--- module-init-tools-orig/Makefile.in    2012-08-20 14:55:17.000323303 +0200
++++ module-init-tools/Makefile.in 2012-08-20 14:55:41.640335059 +0200
+@@ -866,7 +866,7 @@
+               exit 1; } >&2
+ check-am: all-am
+ check: check-am
+-all-am: Makefile $(LIBRARIES) $(PROGRAMS) $(MANS)
++all-am: Makefile $(LIBRARIES) $(PROGRAMS) #$(MANS)
+ installdirs:
+        for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(sbindir)" "$(DESTDIR)$(man5dir)" "$(DESTDIR)$(man8dir)"; do \
+          test -z "$$dir" || $(MKDIR_P) "$$dir"; \
