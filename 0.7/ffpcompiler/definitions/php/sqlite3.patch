@@ -1,0 +1,15 @@
+--- configure.orig      2012-09-19 15:13:12.328730252 +0200
++++ configure   2012-09-19 15:14:26.568767540 +0200
+@@ -75932,6 +75932,12 @@
+
+   else
+       # use bundled libs
++
++      # This change is anchored here to avoid patch being misapplied.  This really only needs to be added
++      # when pdo_sqlite is compiled shared and using the bundled sqlite3.  It shouldn't hurt so long as the
++      # bundled sqlite3 is used though.
++      shared_objects_pdo_sqlite="$shared_objects_pdo_sqlite ext/sqlite3/libsqlite/sqlite3.lo"
++
+       if test "$enable_maintainer_zts" = "yes"; then
+         threadsafe_flags="-DSQLITE_THREADSAFE=1"
+       else

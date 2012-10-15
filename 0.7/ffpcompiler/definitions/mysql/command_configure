@@ -7,7 +7,7 @@ cmake \
 -DINSTALL_MYSQLTESTDIR=share/mysql/test \
 -DINSTALL_DOCDIR=share/mysql/docs \
 -DINSTALL_INFODIR=share/mysql/info \
--DINSTALL_SCRIPTDIR=share/mysql/scripts \
+-DINSTALL_SCRIPTDIR=bin \
 -DINSTALL_SUPPORTFILESDIR=share/mysql/support-files \
 -DINSTALL_DOCREADMEDIR=share/mysql \
 -DINSTALL_MYSQLSHAREDIR=share/mysql \

@@ -1,0 +1,4 @@
+# cat mysql/command_patch
+cd $E
+# Patch against Bug 62769: http://bugs.mysql.com/bug.php?id=62769
+patch -p0 < $X/sqlite3.patch
