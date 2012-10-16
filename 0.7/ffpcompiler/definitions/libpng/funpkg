@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=libpng
-export PV=1.5.10
+export PV=1.5.13
 export PR=1
 export SRC_URI="http://switch.dl.sourceforge.net/project/libpng/libpng15/$PV/libpng-$PV.tar.xz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"
