@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=php
-export PV=5.4.7
+export PV=5.4.8
 export PR=2
 export SRC_URI="http://de.php.net/distributions/php-$PV.tar.gz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX --build=$GNU_BUILD --host=$GNU_HOST --mandir=/ffp/man --enable-fpm --with-config-file-path=/ffp/etc --enable-shared=yes --enable-static=no --with-gnu-ld --with-pic --enable-hash --enable-session --with-pcre-regex --enable-posix --enable-sockets --enable-sysvsem --enable-calendar=shared --enable-ctype=shared --enable-libxml --enable-simplexml --enable-soap --with-libxml-dir=/ffp --enable-mbstring --enable-mbregex --enable-pdo=shared --enable-zip --with-zip=/ffp --without-sqlite --with-sqlite3=shared --with-pdo-sqlite=shared,/ffp --with-mysql=shared,/ffp --with-pdo-mysql=shared,/ffp --with-mysqli=/ffp/bin/mysql_config --with-mysql-sock=/ffp/var/run/mysql/mysql.sock --enable-tokenizer=shared --with-zlib=shared --with-zlib-dir=/ffp --with-openssl=/ffp --enable-pcntl --enable-sigchild --enable-ftp=shared --with-gd=shared --with-curl=/ffp --with-curlwrappers --with-jpeg-dir=/ffp --with-png-dir=/ffp --with-iconv=/ffp --with-mcrypt=/ffp"

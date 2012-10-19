@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=libksba
-export PV=1.2.0
+export PV=1.3.0
 export PR=1
 export SRC_URI="ftp://ftp.gnupg.org/gcrypt/libksba/libksba-$PV.tar.bz2"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"
