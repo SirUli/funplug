@@ -1,0 +1,16 @@
+cd $E
+
+# Fix Paths
+sed -i 's#/usr#/ffp#g' Makefile genconfig.sh
+
+# Patch against bug:
+# Solution found under: http://forum.dsmg600.info/viewtopic.php?pid=47094#p47094
+# -----------------------------------------------------------------------------
+# metadata.o: In function `lav_close':
+# /mnt/HD_a2/ffpbuildenv_07/minidlna-1.0.25/metadata.c:114: undefined reference to `avformat_close_input'
+# /mnt/HD_a2/ffpbuildenv_07/minidlna-1.0.25/metadata.c:114: undefined reference to `avformat_close_input'
+# collect2: ld returned 1 exit status
+# make: *** [minidlna] Error 1
+# -----------------------------------------------------------------------------
+
+patch -p0 < $X/minidlna-metadata.patch

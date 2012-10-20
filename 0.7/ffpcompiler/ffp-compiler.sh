@@ -114,11 +114,14 @@ function func_post {
 # Example: func_step pre makepkg
 # This will then execute command_pre_makepg
 function func_step {
-    FILENAME=$X/command_{$1}_{$2}
+    FILENAME=$X/command_${1}_${2}
     if [[ -f $FILENAME ]]; then
         # Run the file with custom commands
         chmod +x $FILENAME
         $FILENAME
+	if [[ $? > 0 ]]; then
+		exit 1
+	fi
     fi
 }
 ###############################################################################
