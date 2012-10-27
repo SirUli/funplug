@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=git
-export PV=1.7.11.4
+export PV=1.8.0
 export PR=1
 export SRC_URI="http://git-core.googlecode.com/files/git-$PV.tar.gz"
 export CONFIGURE_ARGS="--prefix=/ffp --build=$GNU_BUILD --host=$GNU_HOST --mandir=$MANDIR --infodir=$INFODIR --disable-nls --with-openssl --with-curl --with-expat --with-iconv=/ffp  --with-gitconfig=/ffp/etc/gitconfig --with-gitattributes=/ffp/etc/gitattributes --with-pager=/ffp/bin/less --with-editor=/ffp/bin/vim --with-shell=/ffp/bin/sh --with-perl=/ffp/bin/perl --without-python --with-zlib=/ffp --without-tcltk"

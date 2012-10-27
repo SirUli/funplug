@@ -1,0 +1,12 @@
+# Replace
+sed -i '/^LIBS = -lpthread/ c\LIBS = -lz -lm -lpthread -lvorbis -logg -lexif -ljpeg -lsqlite3 -lavformat -lavcodec -lavutil -lid3tag -lFLAC -liconv' Makefile
+
+# Disable NLS
+# Replace
+sed -ie 's!#define USE_DAEMON!/* #define USE_DAEMON */!g' config.h
+# Replace
+sed -ie 's!#define ENABLE_NLS!/* #define ENABLE_NLS */!g' config.h
+# Replace
+sed -ie 's!#ifdef ENABLE_NLS!#define _(string) (string)!g' upnpglobalvars.h
+# Remove
+sed -i '/#define _(string) gettext(string)/,/#endif/d' upnpglobalvars.h
