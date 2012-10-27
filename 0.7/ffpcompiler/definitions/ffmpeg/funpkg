@@ -1,8 +1,8 @@
 #!/ffp/bin/sh
 
 export PN=ffmpeg
-export PV=0.11.1
+export PV=1.0
 export PR=1
-export SRC_URI="http://ffmpeg.org/releases/ffmpeg-$PV.tar.gz"
-export CONFIGURE_ARGS="--prefix=$CPREFIX --disable-static --enable-shared --enable-gpl --enable-nonfree --enable-small --disable-encoder=aac --disable-decoder=aac --disable-armv6 --disable-armv6t2 --disable-armvfp"
+export SRC_URI="http://ffmpeg.org/releases/ffmpeg-$PV.tar.bz2"
+export CONFIGURE_ARGS="--prefix=$CPREFIX --disable-static --enable-shared --enable-gpl --enable-version3 --enable-nonfree --enable-small --disable-encoder=aac --disable-decoder=aac --disable-armv6 --disable-armv6t2 --disable-armvfp --disable-mmx --disable-mmx2 --enable-small --enable-zlib --enable-postproc --enable-swscale"
 export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_patch func_configure func_make func_make_install func_dir_ffp func_dir_install func_makepkg"

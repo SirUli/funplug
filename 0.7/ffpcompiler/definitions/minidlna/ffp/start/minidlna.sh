@@ -14,6 +14,8 @@ stop_cmd="minidlna_stop"
 
 pid_file="/ffp/var/run/minidlna.pid"
 
+required_files="/ffp/etc/minidlna.conf"
+
 minidlna_flags="-f /ffp/etc/minidlna.conf -P $pid_file"
 
 rebuild_db=$2
