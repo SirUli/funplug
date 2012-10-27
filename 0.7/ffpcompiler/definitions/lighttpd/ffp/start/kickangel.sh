@@ -27,7 +27,9 @@ kickangel_start(){
                 	echo "Killing lighttpd ..."
                 	kill -9 `pidof lighttpd`
 		else
-			sleep 2
+			if [[ $i -ne 5 ]]; then
+				sleep 2
+			fi
         	fi
 	done
 	echo "Hopefully killed"
