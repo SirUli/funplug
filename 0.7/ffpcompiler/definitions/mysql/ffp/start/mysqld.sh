@@ -15,17 +15,14 @@ mysqld_flags="--skip-networking --user=root"
 mysqld_start()
 {
         echo "Starting mysql"
-        if [[ ! -h /srv ]]; then
+        SRVPATH=/ffp/opt/srv
+	if [[ ! -h /srv ]]; then
                 echo "Creating directories"
                 SRVPATH=/ffp/opt/srv
-                mkdir -p $SRVPATH/mysql/innodb/
-                mkdir -p $SRVPATH/mysql/innodblogdir/
-		mkdir -p $SRVPATH/mysql/binlog/
-		mkdir -p $SRVPATH/mysql/log/
-                mkdir -p $SRVPATH/mysql/tmp/
-		mkdir -p $SRVPATH/mysql/datadir/
                 ln -snf $SRVPATH /srv
         fi
+	echo "Checking for directories and creating them if required"
+	mkdir -p /srv/mysql/{innodblogdir,binlog,log,tmp,datadir}
 	/ffp/bin/mysqld_safe $mysqld_flags </dev/null &
 }
 

@@ -378,8 +378,12 @@ function func_makepkg {
 	func_echo "Package version:   $PV"
 	func_echo "Package revision:  $PR"
 	func_pre makepkg
+	func_echo "Executing:"
+	func_echo "cd $D"
+	func_echo "PKGDIR=$F /ffp/sbin/makepkg $PN $PV $PR"
         PKGDIR=$F /ffp/sbin/makepkg $PN $PV $PR
 	RC=$?
+	func_echo "done."
 	[[ $RC -gt 0 ]] && return $RC
         export PACKAGELOCATION=$(ls -1 $F/$PN-$PV-*-$PR.txz)
 	func_post makepkg
