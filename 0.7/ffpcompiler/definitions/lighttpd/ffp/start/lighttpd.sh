@@ -22,14 +22,16 @@ reload_cmd="lighttpd_reload"
 lighttpd_start()
 {
         echo "Starting lighttpd-angel"
-	if [[ ! -h /srv ]]; then
-		echo "Creating directories"
-		SRVPATH=/ffp/opt/srv
-		mkdir -p $SRVPATH/www/pages/
-		mkdir -p $SRVPATH/www/logs/
-		mkdir -p $SRVPATH/www/tmp/
-		ln -snf $SRVPATH /srv
+	if [[ -d /srv && ! -h /srv ]]; then
+		echo "/srv should not be a directory, just a symbolic link. Something went wrong, exiting"
+		exit 1
 	fi
+	if [[ ! -h /srv ]]; then
+		echo "Creating symbolic link"
+		ln -snf /ffp/opt/srv /srv
+	fi
+	echo "Creating directories"
+	mkdir -p /srv/www/{pages,logs,tmp}
 	$command $lighttpd_flags >/dev/null 2>/dev/null </dev/null &
 }
 
