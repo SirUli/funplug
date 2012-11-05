@@ -20,12 +20,14 @@ kickangel_start(){
 		if [[ $(pidof lighttpd-angel) -gt 0 ]]; then
                 	echo "Killing angel of lighttpd ..."
                 	kill -9 `pidof lighttpd-angel`
+			sleep  1
 		else
 			sleep 2
         	fi
 		if [[ $(pidof lighttpd) -gt 0 ]]; then
                 	echo "Killing lighttpd ..."
                 	kill -9 `pidof lighttpd`
+			sleep 1
 		else
 			if [[ $i -ne 5 ]]; then
 				sleep 2
