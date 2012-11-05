@@ -1,0 +1,5 @@
+cd $E/Project/GNU/Library
+chmod +x autogen
+./autogen
+./configure --prefix=/ffp --enable-shared
+make clean

@@ -1,0 +1,4 @@
+cd $E/Project/GNU/CLI
+chmod +x autogen
+./autogen
+./configure --prefix=/ffp

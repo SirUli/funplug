@@ -1,0 +1,10 @@
+cd $E/Project/GNU/Library
+make DESTDIR=$D install || return 1
+
+for i in MediaInfo MediaInfoDLL; do
+	install -dm 755 $D/ffp/include/$i
+	install -m 644 $E/Source/$i/*.h $D/ffp/include/$i 
+done
+install -dm 755 $D/ffp/lib/pkgconfig
+install -m 644 $E/Project/GNU/Library/libmediainfo.pc $D/ffp/lib/pkgconfig 
+sed -i -e 's|Version: |Version: '$PV'|g' $D/ffp/lib/pkgconfig/libmediainfo.pc

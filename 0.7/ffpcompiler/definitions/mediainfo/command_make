@@ -1,0 +1,2 @@
+cd $E/Project/GNU/CLI
+make || return 1

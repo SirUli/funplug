@@ -1,0 +1,2 @@
+cd $E/Project/GNU/Library
+make || return 1

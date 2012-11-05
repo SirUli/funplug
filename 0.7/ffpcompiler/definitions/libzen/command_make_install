@@ -1,0 +1,11 @@
+cd $E/Project/GNU/Library
+make DESTDIR=$D install
+
+install -dm 755 $D/ffp/include/ZenLib
+install -m 644 $E/Source/ZenLib/*.h $D/ffp/include/ZenLib
+install -dm 755 $D/ffp/include/ZenLib/HTTP_Client
+install -m 644 $E/Source/ZenLib/HTTP_Client/*.h $D/ffp/include/ZenLib/HTTP_Client    
+install -dm 755 $D/ffp/lib/pkgconfig
+install -m 644 $E/Project/GNU/Library/libzen.pc $D/ffp/lib/pkgconfig 
+sed -i -e 's|Version: |Version: '$PV'|g' $D/ffp/lib/pkgconfig/libzen.pc
+install -D -m 644 $E/License.txt $D/ffp/include/ZenLib/License.txt
