@@ -1,7 +1,7 @@
 #!/ffp/bin/sh -xe
 
 export PN=gnupg
-export PV=1.4.12
+export PV=1.4.13
 export PR=1
 export SRC_URI="ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-$PV.tar.bz2"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"
