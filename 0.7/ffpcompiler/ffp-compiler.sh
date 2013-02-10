@@ -494,7 +494,7 @@ function func_run_command {
                     fi
                     break
                 else
-                    func_echo "Invalid choice ($COMPILESCRIPTFAILUREAGAIN). Please try again";
+                    func_echo "Invalid choice. Please try again";
                 fi
             done
         fi
