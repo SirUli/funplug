@@ -1,0 +1,2 @@
+This fixes a bug in the D-Link software where the firmware sets a
+"chmod -R 777" to all disks

@@ -1,8 +1,9 @@
 #!/ffp/bin/sh
 
 export PN=curl
-export PV=7.28.1
+export PV=7.29.0
 export PR=1
 export SRC_URI="http://curl.haxx.se/download/curl-$PV.tar.bz2"
+export FFP_CFLAGS="-O2"
 export CONFIGURE_ARGS="--prefix=$CPREFIX --enable-cookies --enable-crypto-auth --enable-nonblocking --enable-file --enable-ftp --enable-http --enable-ipv6 --disable-ares --disable-debug --disable-dict --disable-gopher --disable-ldap --disable-manual --disable-sspi --disable-dict --enable-tftp --disable-verbose --with-random='/dev/urandom' --without-krb4 --without-libidn --without-nss"
 export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_patch func_configure func_make func_make_install func_dir_ffp func_dir_install func_makepkg"
