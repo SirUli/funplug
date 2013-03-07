@@ -1,1 +1,1 @@
-0 4 * * 0 /ffp/ffp-backup/ffp-backup.sh
+0 4 * * 0 /ffp/var/opt/ffpbackup/ffpbackup.sh
