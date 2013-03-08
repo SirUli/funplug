@@ -4,7 +4,7 @@ TODAY=$(date +%s);
 # First load configuration
 CONFIGFILE=/ffp/etc/ffpbackup/ffpbackup.conf
 if [[ ! -f $CONFIGFILE ]]; then
-	echo "Please configure first:"
+	echo "Please configure FFPbackup first:"
 	echo "Configuration file should be available at $CONFIGFILE"
 	echo "Example is available at /ffp/etc/examples/ffpbackup/"
 	echo "Exiting"
@@ -22,6 +22,15 @@ function func_create_dir {
 		return $?
 	fi
 }
+# General logger
+function func_log {
+	DATE_FORMATTED=$(date +"%b %d  %T")
+	LOGMESSAGE="$DATE_FORMATTED FFPbackup: $*"
+	# Log to commandline if verbosity is set
+	[[ $VERBOSE -eq 1 ]] && echo $LOGMESSAGE
+	# Log to Webinterface of D-Link Devices
+	[[ $WEBLOGGING -eq 1 ]] && echo $LOGMESSAGE >> /var/log/user.log
+}
 ###############################################################################
 # Check verbosity
 if [[ $VERBOSE -eq 1 ]]; then
@@ -31,7 +40,7 @@ fi
 # Check the general backup directory
 func_create_dir $BACKUPDIR
 if [[ $? -ne 0 ]]; then
-	echo "Directory $BACKUPDIR not available, please check"
+	func_log "Directory $BACKUPDIR not available, please check"
 	exit 1
 fi
 ###############################################################################
@@ -39,7 +48,7 @@ fi
 BACKUPDIRTODAY=$BACKUPDIR/$TODAY
 func_create_dir $BACKUPDIRTODAY
 if [[ $? -ne 0 ]]; then
-        echo "Directory $BACKUPDIRTODAY not available, please check"
+        func_log "Directory $BACKUPDIRTODAY not available, please check"
 	exit 1
 fi
 ###############################################################################
@@ -48,7 +57,7 @@ DELOLDERTHAN=$(date --date "-$RETENTION Days" +%s);
 DELOLDERDIRS=$(ls -gGl $BACKUPDIR| grep ^d| tr -s [:blank:] " " |cut -d' ' -f 7);
 for DELOLDERDIR in $DELOLDERDIRS; do
 	if [[ $DELOLDERDIR -lt $DELOLDERTHAN ]]; then
-		echo "Deleting $BACKUPDIR/$DELOLDERDIR";
+		func_log "Deleting $BACKUPDIR/$DELOLDERDIR";
 		#rm -Rf $BACKUPDIR/$DELOLDERDIR;
 	fi
 done
@@ -61,21 +70,18 @@ else
 fi
 ###############################################################################
 # check if we should log to the WebInterface
-if [[ $WEBLOGGING = true ]]; then
-DATE_FORMATTED="`date +\"%b %d  %T\"`"
-STAT="FFPbackup wurde ausgelöst."
-STR="$DATE_FORMATTED DNS-325 ffp-backup: $STAT"
-echo "$STR" >> /var/log/user.log
-fi
+func_log "Backup starting"
 ###############################################################################
 # Perform the backup
 # Switch to /ffp
 cd /ffp
 # Create tar file
-tar $EXCLUDELIST $TARVERBOSE -zcf $BACKUPDIRTODAY/fun_plug.tgz *
+tar $EXCLUDELIST $TARVERBOSE -pzcf $BACKUPDIRTODAY/fun_plug.tgz *
 if [[ $? -ne 0 ]]; then
-	echo "Backup failed? See above"
+	func_log "Backup failed, please check"
 	exit 1
+else
+	func_log "Backup successful"
 fi
 ###############################################################################
 # Create md5sum for later consistency check
@@ -84,3 +90,4 @@ md5sum $BACKUPDIRTODAY/fun_plug.tgz > $BACKUPDIRTODAY/fun_plug.tgz.md5
 chmod -R $BACKUPCHMOD $BACKUPDIR
 chown -R $BACKUPCHOWN $BACKUPDIR
 ###############################################################################
+func_log "Backup finished"
