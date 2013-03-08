@@ -60,6 +60,14 @@ else
 	EXCLUDELIST=""
 fi
 ###############################################################################
+# check if we should log to the WebInterface
+if [[ $WEBLOGGING = true ]]; then
+DATE_FORMATTED="`date +\"%b %d  %T\"`"
+STAT="FFPbackup wurde ausgelöst."
+STR="$DATE_FORMATTED DNS-325 ffp-backup: $STAT"
+echo "$STR" >> /var/log/user.log
+fi
+###############################################################################
 # Perform the backup
 # Switch to /ffp
 cd /ffp
