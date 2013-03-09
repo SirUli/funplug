@@ -162,6 +162,15 @@ function func_init_pkg_work_dir {
     func_create_path $F
 }
 ###############################################################################
+# Cleans the W-directory of a package
+function func_clean_W {
+    if [[ -d $W ]]; then
+        echo "Removing $W"
+        rm -Rf $W
+    fi
+    return 0
+}
+###############################################################################
 # Copy additional data to 'install' directory
 function func_dir_install {
     func_create_path $D/install
@@ -338,6 +347,7 @@ function func_make {
         STOCK_COMMAND_MAKE="make"
         COMMAND_MAKE=${COMMAND_MAKE:=$STOCK_COMMAND_MAKE}
 	func_pre make
+	echo "Executing command: $COMMAND_MAKE"
         eval $COMMAND_MAKE
 	RC=$?
 	[[ $RC -gt 0 ]] && return $RC
