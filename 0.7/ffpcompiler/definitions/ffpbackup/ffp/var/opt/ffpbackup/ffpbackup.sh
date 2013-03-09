@@ -1,4 +1,7 @@
 #!/ffp/bin/sh
+# AUTHORS:
+# - Simon Groot Bramel
+# - Uli Wolf (http://wolf-u.li)
 TODAY=$(date +%s);
 ###############################################################################
 # First load configuration
