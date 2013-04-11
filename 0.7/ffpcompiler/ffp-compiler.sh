@@ -313,14 +313,14 @@ function func_determine_arch {
 # Execute configure
 function func_configure {
     cd $E
+    func_echo "cd $E"
     func_determine_arch
     if [[ ! -f $X/command_configure ]]; then
         export STOCK_FFP_CFLAGS="-I/ffp/include -O2"
         export STOCK_FFP_LDFLAGS="-L/ffp/lib -Wl,-rpath,/ffp/lib"
         export FFP_LDFLAGS=${FFP_LDFLAGS:=$STOCK_FFP_LDFLAGS}
         export FFP_CFLAGS=${FFP_CFLAGS:=$STOCK_FFP_CFLAGS}
-        echo "CFLAGS=$FFP_CFLAGS"
-        echo "LDFLAGS=$FFP_LDFLAGS"
+        func_echo "CFLAGS=$FFP_CFLAGS CFLAGS=$FFP_LDFLAGS ./configure $CONFIGURE_ARGS"
 	func_pre configure
         CFLAGS="$FFP_CFLAGS" LDFLAGS="$FFP_LDFLAGS" ./configure $CONFIGURE_ARGS
 	RC=$?
