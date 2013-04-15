@@ -1,0 +1,5 @@
+cd $E
+echo "[install]" >> setup.cfg
+echo "install_scripts = /ffp/bin" >> setup.cfg
+echo "[build_scripts]" >> setup.cfg
+echo "executable=/ffp/bin/python2.7" >> setup.cfg

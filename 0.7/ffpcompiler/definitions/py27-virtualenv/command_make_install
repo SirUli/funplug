@@ -1,0 +1,1 @@
+/ffp/bin/python2.7 setup.py install --root=$D --prefix=/ffp
