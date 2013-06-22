@@ -1,0 +1,25 @@
+#!/ffp/bin/sh
+#
+#****h* uwservie/service
+# NAME
+#  Service Script
+# SYNOPSIS
+#  Configures and runs services with user input
+# AUTHOR
+#  * Uli Wolf (UW) <m@il.wolf-u.li>
+# HISTORY
+#  * (YYYY-MM-DD - Author: Changes)
+#  * 2012-11-04 - UW: Initial Version
+################################################################################
+# SOURCE
+
+SERVICE=$1
+COMMAND=$2
+
+if [[ -f /ffp/start/${1}.sh ]]; then
+	/ffp/start/${1}.sh $2
+else
+	echo "Service '/ffp/start/${1}.sh' not found";
+fi
+
+#****

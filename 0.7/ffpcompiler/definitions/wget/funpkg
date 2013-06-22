@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=wget
-export PV=1.13.4
+export PV=1.14
 export PR=1
 export SRC_URI="http://ftp.gnu.org/gnu/wget/wget-$PV.tar.xz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"

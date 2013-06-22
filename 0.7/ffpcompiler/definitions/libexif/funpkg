@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=libexif
-export PV=0.6.20
+export PV=0.6.21
 export PR=1
 export SRC_URI="http://dfn.dl.sourceforge.net/project/libexif/libexif/$PV/libexif-$PV.tar.gz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"

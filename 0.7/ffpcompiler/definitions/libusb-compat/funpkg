@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=libusb-compat
-export PV=0.1.4
+export PV=0.1.5
 export PR=1
 export SRC_URI="http://switch.dl.sourceforge.net/project/libusb/libusb-compat-0.1/libusb-compat-$PV/libusb-compat-$PV.tar.bz2"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"

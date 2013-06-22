@@ -1,0 +1,4 @@
+cd $DIR_DIST
+for FILENAME in $(ls -1|grep -v "tar.gz"); do
+	mv $FILENAME ${FILENAME}.tar.gz
+done

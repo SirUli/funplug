@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=libxml2
-export PV=2.8.0
+export PV=2.9.1
 export PR=1
 export SRC_URI="ftp://xmlsoft.org/libxml2/libxml2-$PV.tar.gz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"

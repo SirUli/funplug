@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=mkvtoolnix
-export PV=5.6.0
+export PV=6.2.0
 export PR=1
 export SRC_URI="https://www.bunkus.org/videotools/mkvtoolnix/sources/mkvtoolnix-$PV.tar.bz2"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"

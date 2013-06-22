@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=sqlite
-export PV=3071602
+export PV=3071700
 export PR=1
 export SRC_URI="http://www.sqlite.org/2013/sqlite-autoconf-$PV.tar.gz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"

@@ -1,0 +1,8 @@
+#!/ffp/bin/sh
+
+export PN=dbus-glib
+export PV=0.100
+export PR=1
+export SRC_URI="http://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-$PV.tar.gz"
+export CONFIGURE_ARGS="--prefix=$CPREFIX --enable-abstract-sockets --with-xml=expat --without-x"
+export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_patch func_configure func_make func_make_install func_dir_ffp func_dir_install func_makepkg"

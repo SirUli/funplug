@@ -1,0 +1,4 @@
+The udisks project provides:
+ - a daemon, udisksd, that implements well-defined D-Bus interfaces that can be
+   used to query and manipulate storage devices.
+ - a command-line tool, udisksctl, that can be used to query and use the daemon 

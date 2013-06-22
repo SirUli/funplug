@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=openldap
-export PV=2.4.32
+export PV=2.4.35
 export PR=1
 export SRC_URI="ftp://sunsite.cnlab-switch.ch/mirror/OpenLDAP/openldap-release/openldap-$PV.tgz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"
