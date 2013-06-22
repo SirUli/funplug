@@ -7,6 +7,32 @@
 #     definitions ($DIR_DEFINITIONS)
 #         nano($X)
 #             nano.funpkg
+#             command_pre_download_distfile (optional)
+#             command_download_distfile (optional)
+#             command_post_download_distfile (optional)
+#             ------------------
+#             command_pre_download_all_distfiles (optional)
+#             command_post_download_all_distfiles (optional)
+#             ------------------
+#             command_unpack_distfile (optional)
+#             ------------------
+#             command_patch (optional)
+#             ------------------
+#             command_pre_configure (optional)
+#             command_configure (optional)
+#             command_post_configure (optional)
+#             ------------------
+#             command_pre_make (optional)
+#             command_make (optional)
+#             command_post_make (optional)
+#             ------------------
+#             command_pre_make_install (optional)
+#             command_make_install (optional)
+#             command_post_make_install (optional)
+#             ------------------
+#             command_pre_makepkg (optional)
+#             command_makepkg (optional)
+#             command_post_makepkg (optional)
 #     destdir ($DIR_DESTDIR)
 #         nano ($F)
 #             nano-2.2.5-arm-1.txz
@@ -191,6 +217,7 @@ function func_dir_ffp {
 # Download the package
 function func_download_distfile {
     if [[ $(ls -1 $DIR_DIST|wc -l) -eq 0 ]]; then
+	func_pre download_distfile
         if [[ ! -f $X/command_download_distfile ]]; then        
             cd $DIR_DIST
             wget --no-check-certificate $SRC_URI
@@ -200,15 +227,18 @@ function func_download_distfile {
             chmod +x $X/command_download_distfile
             $X/command_download_distfile
         fi
+	func_post download_distfile
     else
         func_echo "There are files in $DIR_DIST"
         func_echo "therefore no download is started. If you want to redownload,"
         func_echo "please delete all files in this directory"
     fi
+    
 }
 
 # To be used when running offline compilers
 function func_download_all_distfiles {
+	func_pre download_all_distfiles
 	for DIRNAME in $(ls -1 $DIR_DEFINITIONS|grep -v '_template'); do
                 DIRPATH=$DIR_DEFINITIONS/$DIRNAME
                 if [[ -f $DIRPATH/funpkg ]]; then
@@ -221,6 +251,7 @@ function func_download_all_distfiles {
         	func_init_pkg_work_dir
 		func_download_distfile
 	done
+	func_post download_all_distfiles
 }
 ###############################################################################
 # Unpack the package
@@ -261,7 +292,8 @@ function func_unpack_distfile {
                         rm $FILEPATH
                         ;;
                     *)
-                        die "$(basename $FILEPATH): Don't know how to unpack"
+                        echo "$(basename $FILEPATH): Don't know how to unpack"
+			exit 1
                         ;;
                 esac
             else
@@ -580,7 +612,12 @@ do
 		        else
 		                func_echo "No file found in $DIRNAME"
 		        fi
-		        echo " - $PN - $PV - $PR"
+			if [[ -f $DIRPATH/HOMEPAGE ]]; then
+				HOMEPAGE=$(cat $DIRPATH/HOMEPAGE);
+			else
+				HOMEPAGE="No Homepage"
+			fi
+		        echo " - $PN - $PV - $PR - $HOMEPAGE"
 		done
         elif [[ $YESNOVERSIONS = "No" ]]; then
             func_echo "Not showing version report."

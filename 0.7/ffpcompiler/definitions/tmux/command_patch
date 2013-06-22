@@ -1,0 +1,3 @@
+sed -i -e 's!/usr/bin/uname!/ffp/bin/uname!g' \
+       -e 's!/usr/bin/arch!/ffp/bin/arch!g' \
+       -e 's!-lresolv!!g' configure

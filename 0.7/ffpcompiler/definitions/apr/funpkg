@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=apr
-export PV=1.4.6
+export PV=1.4.8
 export PR=2
 export SRC_URI="http://www.apache.org/dist/apr/apr-$PV.tar.bz2"
 export CONFIGURE_ARGS="apr_cv_sock_cloexec=no --prefix=$CPREFIX --disable-static --with-installbuilddir=$CPREFIX/lib/apr-${PV}/build-${PV%%.*} --with-devrandom=/dev/urandom"

@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=dirmngr
-export PV=1.1.0
+export PV=1.1.1
 export PR=1
 export SRC_URI="ftp://ftp.gnupg.org/gcrypt/dirmngr/dirmngr-$PV.tar.bz2"
 export CONFIGURE_ARGS=" LIBS=-llber --prefix=$CPREFIX"

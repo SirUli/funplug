@@ -1,1 +1,5 @@
 sed -i -e "s+-O3+${CFLAGS}+" -e "s+/usr/+/ffp/+" Makefile
+sed -i \
+  -e 's@/etc/syslog.conf@/ffp/etc/syslog.conf@g' \
+  -e 's@/etc/syslogd.pid@/ffp/var/run/syslogd.pid@g' \
+  -e 's@/etc/klogd.pid@/ffp/var/run/klogd.pid@g' *

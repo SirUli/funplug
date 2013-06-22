@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=cairo
-export PV=1.12.2
+export PV=1.12.14
 export PR=1
 export SRC_URI="http://cairographics.org/releases/cairo-$PV.tar.xz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"
