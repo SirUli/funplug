@@ -3,6 +3,6 @@
 export PN=glib
 export PV=2.36.3
 export PR=1
-export SRC_URI="http://ftp.gnome.org/pub/gnome/sources/glib/2.32/glib-$PV.tar.xz"
+export SRC_URI="http://ftp.gnome.org/pub/gnome/sources/glib/2.36/glib-$PV.tar.xz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX"
 export COMMANDS="func_init_pkg_work_dir func_download_distfile func_unpack_distfile func_patch func_configure func_make func_make_install func_dir_ffp func_dir_install func_makepkg"

@@ -1,7 +1,7 @@
 #!/ffp/bin/sh
 
 export PN=rsync
-export PV=3.0.9
+export PV=3.1.0
 export PR=1
 export SRC_URI="https://rsync.samba.org/ftp/rsync/src/rsync-$PV.tar.gz"
 export CONFIGURE_ARGS="--prefix=$CPREFIX --disable-nls --disable-debug --disable-locale --with-rsyncd-conf=/ffp/etc/rsyncd.conf"

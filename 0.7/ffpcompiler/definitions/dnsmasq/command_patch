@@ -1,8 +1,7 @@
 #  dnsmasq.conf
 #  /var/...
-sed -i \
-    -e "/CONFFILE/ s@CONFFILE.*@CONFFILE \"$CSYSCONFDIR/dnsmasq.conf\"@" \
-    -e "s@/var/@$CPREFIX&@g" \
-    src/config.h
-sed -i 's!#ifndef CONFFILE "/ffp/etc/dnsmasq.conf"!#ifndef CONFFILE!g' src/config.h
+#sed -i -e "/CONFFILE/ s@CONFFILE.*@CONFFILE \"$CSYSCONFDIR/dnsmasq.conf\"@" src/config.h
 
+sed -i -e "s@/var/@$CPREFIX&@g" src/config.h
+sed -i 's!"/etc/dnsmasq.conf"!"/ffp/etc/dnsmasq.conf"!g' src/config.h
+sed -i 's!#define HAVE_IPSET!!g' src/config.h

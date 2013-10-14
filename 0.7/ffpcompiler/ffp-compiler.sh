@@ -617,7 +617,9 @@ do
 			else
 				HOMEPAGE="No Homepage"
 			fi
-		        echo " - $PN - $PV - $PR - $HOMEPAGE"
+		        #echo " - $PN - $PV - $PR - $HOMEPAGE"
+			printf "%-30s %-10s %-10s" $PN $PV $PR
+			echo " $HOMEPAGE"
 		done
         elif [[ $YESNOVERSIONS = "No" ]]; then
             func_echo "Not showing version report."

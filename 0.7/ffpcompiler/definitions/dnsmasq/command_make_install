@@ -3,5 +3,13 @@ make \
     CC=gcc AWK=awk \
     DESTDIR=$D install
 cd $D$CPREFIX
+
+# Example config
+mkdir -p etc/examples/dnsmasq
+cp $E/dnsmasq.conf.example etc/examples/dnsmasq/
+
+# For Lease file
 mkdir -p var/lib/misc
+
+# For runtime environment
 mkdir -p var/run
