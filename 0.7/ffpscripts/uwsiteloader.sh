@@ -40,7 +40,7 @@ dialog --title " Information " --backtitle " UW Site Loader " --msgbox "If you w
 ################################################################################
 # Download the definition-file
 dialog --title " Information " --backtitle " UW Site Loader " --infobox "Downloading definitions\nPlease wait" 10 40
-wget -nv http://wolf-u.li/u/439 -O $TMPFILE1
+curl -L https://wolf-u.li/u/439 -o $TMPFILE1
 if [[ $? -ne 0 ]]; then
 	dialog --title " Error " --backtitle " UW Site Loader " --msgbox "Downloading definitions\nFAILED, please check your internet connection!" 10 40
 	clear
